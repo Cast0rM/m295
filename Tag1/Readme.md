@@ -1,5 +1,4 @@
 # Tag 1
-### Castor M. Fernández Lado | m295
 #### Aufgaben Learn You Node
 Auf [LearnYouNode_Aufgaben](./learnyounode_Aufgaben/) finden wir die gelöste Aufgaben, die wir machen mussten.<br>
 #### Callback Übung
