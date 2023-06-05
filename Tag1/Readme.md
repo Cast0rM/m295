@@ -5,3 +5,5 @@ Auf [LearnYouNode_Aufgaben](./learnyounode_Aufgaben/) finden wir die gelöste Au
 Meine Lösungen zur [Callback Aufgabe](./Aufgabe_Callback/) ist auch hier zu finden.
 #### Übung Promises
 Das Resultat der [Promises Aufgabe](./Aufgabe_Promises//) ist hier zu finden.
+#### Übung Wetterdaten
+Meine Lösungen zur Übung der Wetterdaten ist [hier](./%C3%9Cbung%20Wetterdaten/) zu finden.
