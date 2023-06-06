@@ -48,33 +48,33 @@ app.delete('/name', formHelper, (req, res) => {
     }
 });
 
-// app.get('/secret', (req, res) => {
-//     res.sendStatus(401)
-// })
+app.get('/secret', (req, res) => {
+    res.sendStatus(401)
+})
 
-// app.get('/chuck', (req, res) => {
-//     const name = req.query.name
-//     const url = 'https://api.chucknorris.io/jokes/random'
-//     fetch(url)
-//         .then((response) => response.json())
-//         .then((data) => {
-//             result = data.value
-//         })
-//     res.send(`Witz ${result}`)
-// })
+app.get('/chuck', (req, res) => {
+    const name = req.query.name
+    const url = 'https://api.chucknorris.io/jokes/random'
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            result = data.value
+        })
+    res.send(`Witz ${result}`)
+})
 
-// app.get('/me', (req, res) => {
-//     const me = {
-//         vorname: "Castor Manuel",
-//         nachname: "Fernández Lado",
-//         alter: 18,
-//         wohnort: "Zürich-CH",
-//         augenFarbe: "Braun-Grün"
-//     }
-//     res.json(me)
+app.get('/me', (req, res) => {
+    const me = {
+        vorname: "Castor Manuel",
+        nachname: "Fernández Lado",
+        alter: 18,
+        wohnort: "Zürich-CH",
+        augenFarbe: "Braun-Grün"
+    }
+    res.json(me)
 
-//     // res.sendFile(__dirname + '/me.json')
-// })
+    // res.sendFile(__dirname + '/me.json')
+})
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
