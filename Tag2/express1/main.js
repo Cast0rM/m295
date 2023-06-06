@@ -49,11 +49,11 @@ app.get('/teapot', (req, res) => {
 
 app.get('/user-agent', (req, res) => {
     const userAgent = req.headers['user-agent']
-    res.send(`Du nutzt ${userAgent}`)
+    res.send(`Du nutzt: ${userAgent}`)
 })
 
 app.get('/secret', (req, res) => {
-    res.sendStatus(403)
+    res.sendStatus(401)
 })
 
 app.get('/xml', (req, res) => {
