@@ -44,15 +44,16 @@ app.get('/image', (req, res) => {
 })
 
 app.get('/teapot', (req, res) => {
-    res.send(418, "Teapot")
+    res.sendStatus(418)
 })
 
 app.get('/user-agent', (req, res) => {
-    res.send("User Agent:" + req.headers['user-agent'])
+    const userAgent = req.headers['user-agent']
+    res.send(`Du nutzt ${userAgent}`)
 })
 
 app.get('/secret', (req, res) => {
-    res.send(403, "Secret")
+    res.sendStatus(403)
 })
 
 app.get('/xml', (req, res) => {
