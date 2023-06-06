@@ -36,12 +36,12 @@ app.get('/name', (req, res) => {
 
 app.get('/html', (req, res) => {
 
-    res.sendFile(__dirname + '/index.html')
+    res.sendFile(__dirname + '/dependencies/index.html')
 })
 
 app.get('/image', (req, res) => {
 
-    res.sendFile(__dirname + '/tree.jpg')
+    res.sendFile(__dirname + '/dependencies/tree.jpg')
 })
 
 app.get('/teapot', (req, res) => {
@@ -58,7 +58,7 @@ app.get('/secret', (req, res) => {
 })
 
 app.get('/xml', (req, res) => {
-    res.sendFile(__dirname + '/server.xml')
+    res.sendFile(__dirname + '/dependencies/server.xml')
     // fs.readFile('server.xml', (err, data) => {
     //     if (err) throw err;
 
