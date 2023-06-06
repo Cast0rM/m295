@@ -1,6 +1,8 @@
 const express = require("express")
 const app = express()
 const port = 3000
+const namen = new Array('Leunam', 'Manuel', 'Lucas', 'Mario', 'Fletcher', 'Fahad', 'Osian', 'Kate', 'Leia', 'Andy', 'Ria', 'Hope', 'Usman', 'Kyron', 'Myron', 'Kobe', 'Maryam', 'Mason', 'Albert', 'Declan')
+
 
 app.get('/', (req, res) => {
     res.send("hello world!")
@@ -10,18 +12,25 @@ app.get('/now', (req, res) => {
     var date = new Date()
     var stunden = date.getHours()
     var minuten = date.getMinutes()
-    res.send(`Es ist ${stunden}:${minuten} Uhr`)
+    res.send(`Es ist gerade ${stunden}:${minuten} Uhr`)
 })
 
 app.get('/zli', (req, res) => {
+    const url = "https://www.zli.ch"
+    res.redirect(302, url)
 
-    res.redirect(301, "https://www.zli.ch")
+    // response.statusCode = 302;
+    // response.setHeader("Location", to)
+    // response.setHeader("Location", url).sendStatus(302)
 })
 
 app.get('/name', (req, res) => {
-    var namen = new Array('Leunam', 'Manuel', 'Lucas', 'Mario', 'Fletcher', 'Fahad', 'Osian', 'Kate', 'Leia', 'Andy', 'Ria', 'Hope', 'Usman', 'Kyron', 'Myron', 'Kobe', 'Maryam', 'Mason', 'Albert', 'Declan')
     var rand = Math.trunc(Math.random() * namen.length)
-    res.send(200, `${namen[rand]}`)
+    res.send(200, `Hallo ${namen[rand]}`)
+
+    // const nameRand = namen[Math.floor(Math.Random()*namen.length)]
+    // res.send(nameRand)
+    // || res.send(`Hallo ${nameRand}`)
 })
 
 app.get('/html', (req, res) => {
