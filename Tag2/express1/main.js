@@ -1,4 +1,5 @@
 const express = require("express")
+const fs = require('fs')
 const app = express()
 const port = 3000
 const namen = new Array('Leunam', 'Manuel', 'Lucas', 'Mario', 'Fletcher', 'Fahad', 'Osian', 'Kate', 'Leia', 'Andy', 'Ria', 'Hope', 'Usman', 'Kyron', 'Myron', 'Kobe', 'Maryam', 'Mason', 'Albert', 'Declan')
@@ -58,12 +59,26 @@ app.get('/secret', (req, res) => {
 
 app.get('/xml', (req, res) => {
     res.sendFile(__dirname + '/server.xml')
+    // fs.readFile('server.xml', (err, data) => {
+    //     if (err) throw err;
+
+    //     res.type('xml')
+    //     res.send(data)
+    // })
 })
 
 app.get('/me', (req, res) => {
-    res.sendFile(__dirname + '/me.json')
-})
+    const me = {
+        vorname: "Castor Manuel",
+        nachname: "Fernández Lado",
+        alter: 18,
+        wohnort: "Zürich-CH",
+        augenFarbe: "Braun-Grün"
+    }
+    res.json(me)
 
+    // res.sendFile(__dirname + '/me.json')
+})
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
