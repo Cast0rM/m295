@@ -1,8 +1,28 @@
-fetch('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m')
- .then((response)=> response.json())
- .then((data)=>{
-    console.log(`Die Daten sind: ${data.hourly.time}`)
- });
+/*async "without async we can't use await*/ function displayWeatherData() {
+   const url = "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m" ^
+
+      // Does the same like the async fetch:
+      
+      // const response = await fetch(url);
+      // const data = await response.json
+      // console.log(`Die Temperatur um: ${data.hourly.time[0]} betrug: ${data.hourly.temperature_2m[0]} °C`) 
+      // console.log("Ich bin fertig")
+
+      fetch(url)
+         .then((response) => response.json())
+         .then((data) => {
+            console.log(`Die Temperatur um: ${data.hourly.time[0]} betrug: ${data.hourly.temperature_2m[0]} °C`)
+         })
+         .then(() => {
+            console.log("Ich bin fertig.")
+         })
+         .catch((error) => {
+            console.error(error)
+         });
+}
+
+displayWeatherData();
+
 
 
 // var https = require('https')
