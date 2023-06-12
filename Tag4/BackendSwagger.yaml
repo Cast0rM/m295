@@ -1,0 +1,329 @@
+openapi: 3.0.0
+info:
+  title: Book API
+  version: 1.0.0
+paths:
+  /books:
+    get:
+      summary: Get a list of books
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    isbn:
+                      type: string
+                      example: '9783453318789'
+                    title:
+                      type: string
+                      example: 'Der Nasse Fisch'
+    post:
+      summary: Add a new book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isbn:
+                  type: string
+                  example: '9783453318789'
+                title:
+                  type: string
+                  example: 'Der Nasse Fisch'
+                author:
+                  type: string
+                  example: 'Volker Kutscher'
+                year:
+                  type: integer
+                  example: 2008
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isbn:
+                    type: string
+                    example: '9783453318789'
+                  title:
+                    type: string
+                    example: 'Der Nasse Fisch'
+                  author:
+                    type: string
+                    example: 'Volker Kutscher'
+                  year:
+                    type: integer
+                    example: 2008
+        '422':
+          description: Invalid input
+  /books/{isbn}:
+    get:
+      summary: Get a book by ISBN
+      parameters:
+        - name: isbn
+          in: path
+          required: true
+          schema:
+            type: string
+          example: '9783453318789'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isbn:
+                    type: string
+                    example: '9783453318789'
+                  title:
+                    type: string
+                    example: 'Der Nasse Fisch'
+                  author:
+                    type: string
+                    example: 'Volker Kutscher'
+                  year:
+                    type: integer
+                    example: 2008
+        '404':
+          description: Book not found
+    put:
+      summary: Update a book by ISBN
+      parameters:
+        - name: isbn
+          in: path
+          required: true
+          schema:
+            type: string
+          example: '9783453318789'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isbn:
+                  type: string
+                  example: '9783453318789'
+                title:
+                  type: string
+                  example: 'Der Nasse Fisch'
+                author:
+                  type: string
+                  example: 'Volker Kutscher'
+                year:
+                  type: integer
+                  example: 2008
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isbn:
+                    type: string
+                    example: '9783453318789'
+                  title:
+                    type: string
+                    example: 'Der Nasse Fisch'
+                  author:
+                    type: string
+                    example: 'Volker Kutscher'
+                  year:
+                    type: integer
+                    example: 2008
+        '404':
+          description: Book not found
+        '422':
+          description: Invalid input
+    delete:
+      summary: Delete a book by ISBN
+      parameters:
+        - name: isbn
+          in: path
+          required: true
+          schema:
+            type: string
+          example: '9783453318789'
+      responses:
+        '204':
+          description: Successful operation
+        '404':
+          description: Book not found
+  /lends:
+    get:
+      summary: Get a list of lends
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    isbn:
+                      type: string
+                      example: '9783552059087'
+                    customer_id:
+                      type: integer
+                      example: 1
+                    borrowed_at:
+                      type: string
+                      format: date-time
+                      example: '2023-06-12T10:30:00Z'
+                    returned_at:
+                      type: string
+                      format: date-time
+                      nullable: true
+    post:
+      summary: Add a new lend
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isbn:
+                  type: string
+                  example: '9783552059087'
+                customer_id:
+                  type: integer
+                  example: 1
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2
+                  isbn:
+                    type: string
+                    example: '9783552059087'
+                  customer_id:
+                    type: integer
+                    example: 1
+                  borrowed_at:
+                    type: string
+                    format: date-time
+                    example: '2023-06-12T11:00:00Z'
+                  returned_at:
+                    type: string
+                    format: date-time
+                    nullable: true
+        '422':
+          description: Invalid input
+  /lends/{id}:
+    get:
+      summary: Get a lend by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  isbn:
+                    type: string
+                    example: '9783552059087'
+                  customer_id:
+                    type: integer
+                    example: 1
+                  borrowed_at:
+                    type: string
+                    format: date-time
+                    example: '2023-06-12T10:30:00Z'
+                  returned_at:
+                    type: string
+                    format: date-time
+                    nullable: true
+        '404':
+          description: Lend not found
+    patch:
+      summary: Update a lend by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isbn:
+                  type: string
+                  example: '9783552059087'
+                customer_id:
+                  type: integer
+                  example: 1
+                returned_at:
+                  type: string
+                  format: date-time
+                  nullable: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  isbn:
+                    type: string
+                    example: '9783552059087'
+                  customer_id:
+                    type: integer
+                    example: 1
+                  borrowed_at:
+                    type: string
+                    format: date-time
+                    example: '2023-06-12T10:30:00Z'
+                  returned_at:
+                    type: string
+                    format: date-time
+                    nullable: true
+        '422':
+          description: Invalid input
+        '404':
+          description: Lend not found
